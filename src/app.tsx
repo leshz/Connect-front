@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Initial } from './components/Header/index';
+import { Container } from './containers/content';
 import { GlobalStyle } from './global-styles';
 
 
 export const App = () => (
   <>
     <GlobalStyle />
-    <Initial />
+    <Container />
   </>
 );

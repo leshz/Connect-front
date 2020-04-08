@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { Header } from './styles';
+import { Header, Ul, Li } from './styles';
 
-export const Initial : React.FC = () => (
+export const HeaderNav : React.FC = () => (
   <Header>
     <h1>Connect <br /></h1>
     <nav> 
-      <ul>  
-        <li><a href="#">DashBoard </a></li>
-        <li><a href="#">Contenido</a></li>
-        <li><a href="#">Contenido</a></li>
-      </ul>
+      <Ul>  
+        <Li><a href="#">Item </a></Li>
+        <Li><a href="#">Item</a></Li>
+        <Li><a href="#">Item</a></Li>
+      </Ul>
     </nav>
   </Header>
 );
