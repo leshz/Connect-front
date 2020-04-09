@@ -26,5 +26,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Rubik', sans-serif;
     color:var(--white);
   }
+  html{
+    background-color:#f9f9f9;
+  }
 
 `;

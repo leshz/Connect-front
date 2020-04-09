@@ -6,7 +6,6 @@ export const ContainerWrap = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   grid-template-columns: repeat(12,1fr);
-  grid-template-rows: 30px 1fr 1fr;
+  grid-template-rows: 30px 1fr 1fr 6px;
   grid-gap: 5px 10px;
-  background-color:#f9f9f9;
 `;
