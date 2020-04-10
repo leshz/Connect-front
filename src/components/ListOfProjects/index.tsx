@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ListContainer, Label, ProjectsTitle } from './style';
 
-import { ListItemComponent } from '../List-items/index';
+import { ListItemComponent } from '../ListOfProjectsItems/index';
 
 const list = [
   {
