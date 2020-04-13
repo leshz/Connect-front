@@ -6,20 +6,16 @@ import { ListItemComponent } from '../ListOfProjectsItems/index';
 const list = [
   {
     id: 0,
-    projectName: 'hola',
+    projectName: 'Qa',
   },
   {
     id: 1,
-    projectName: 'Tacnicos',
+    projectName: 'DevOps',
   },
   {
     id: 2,
-    projectName: 'hola',
-  },
-  {
-    id: 3,
-    projectName: 'hola',
-  },
+    projectName: 'Marketing',
+  }
 ];
 export const List = () => (
   <ListContainer>
