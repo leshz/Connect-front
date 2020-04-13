@@ -8,8 +8,8 @@ export const ListContainer = styled.div`
   grid-column-end: 13;
   grid-row-start: 2;
   grid-row-end: 4;
-  border: 1px solid #0000004a;
-  box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.15);
+  /* border: 1px solid #0000004a; */
+  /* box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.15); */
   color:#2d2d2d;
   display : grid;
   grid-template-columns : repeat(6,1fr);

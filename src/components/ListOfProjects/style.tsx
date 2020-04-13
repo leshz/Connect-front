@@ -9,14 +9,18 @@ const ListContainer = styled.div`
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: auto;
-  border: 1px solid #0000004a;
+  border: 1px solid #a2a2a2;
   box-shadow: 0px 0px 7px 5px rgba(0, 0, 0, 0.15);
+  text-align:center;
   color:#2d2d2d;
 `;
 
 const Label = styled.label`
   display: block;
   margin: 20px 0px;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--yellow);
 `;
 
 const ProjectsTitle = styled.h3`

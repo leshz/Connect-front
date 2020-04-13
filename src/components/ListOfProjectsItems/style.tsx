@@ -7,10 +7,12 @@ export const ListItem = styled.li`
   font-size:22px;
   margin: 15px 0;
   border-radius: 5px;
-  border:1px solid #cacaca;
+  border:1px solid #011627;
   cursor: pointer;
+  transition: all .2s ease-in-out ;
   &:hover, &:focus{
-    background-color: #cacaca;
+    background-color: #011627;
+    color:#FFF;
   }
   &.active{
     background-color:var(--green)

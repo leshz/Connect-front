@@ -5,11 +5,11 @@ export const HeaderNav : React.FC = () => (
   <Header>
     <h1>Connect <br /></h1>
     <nav> 
-      <Ul>  
+      {/* <Ul>  
         <Li><a href="#">Item </a></Li>
         <Li><a href="#">Item</a></Li>
         <Li><a href="#">Item</a></Li>
-      </Ul>
+      </Ul> */}
     </nav>
   </Header>
 );

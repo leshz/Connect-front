@@ -38,16 +38,24 @@ export const Column = styled.div`
 
 export const Button = styled.button`
     border: none;
-    background: blue;
     padding: 5px 10px;
     margin: 0px 5px;
     border-radius: 5px;
     outline:none;
+    cursor: pointer;
+    transition: box-shadow .2s ease-in-out;
 
     &.edit{
       background-color:var(--green);
+      box-shadow: 0px 0px 5px 0px rgb(46, 196, 182 , 0);
+      &:hover{
+        box-shadow: 0px 0px 5px 0px rgb(46, 196, 182);
+      }
     }
     &.delete{
       background-color:var(--red);
+      &:hover{
+        box-shadow: 0px 0px 5px 0px rgb(231, 29, 54);
+      }
     }
 `;
