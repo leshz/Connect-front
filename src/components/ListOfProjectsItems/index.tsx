@@ -1,19 +1,14 @@
 import * as React from 'react';
 import { ListItem, Title } from './style';
-
-type listItemProps = { 
-  projectName: String
-};
-
+import { Project } from '../../interfaces/projects';
 
 const OnClickHandler = (event:React.MouseEvent<HTMLElement>) => {
   console.log(event);
 };
 
-
-export const ListItemComponent = ({ projectName }: listItemProps) => (
+export const ListItemComponent = ({ name }: Project) => (
 
   <ListItem onClick={OnClickHandler}>
-    <Title>{projectName}</Title>
+    <Title>{name}</Title>
   </ListItem>
 );
