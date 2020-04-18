@@ -16,6 +16,7 @@ export const ListItemEmployee = styled.div`
 export const Column = styled.div`
   width: 16%;
   text-align: center;
+  margin: 5px 0;
   p {
     font-size: 18px;
     font-weight: 600;
@@ -28,7 +29,7 @@ export const Column = styled.div`
   }
   & img {
     width: 100%;
-    max-width: 60px;
+    max-width: 50px;
     margin: 0 auto;
     display: block;
     border-radius: 50%;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TiEdit, TiUserDelete } from 'react-icons/ti';
+import { TiEdit, TiUserDelete, TiTimes, TiTick } from 'react-icons/ti';
 import { ListItemEmployee, Column, Button } from './style';
 import { employee } from '../../interfaces/employess';
 
@@ -34,7 +34,7 @@ export const ItemEmployee = ({
         <span>span</span>
       </Column>
       <Column className="state">
-        {state ? <p>Activo</p> : <p>No activo</p>}
+        {state ? <TiTick size={40} color="#2EC4B6" /> : <TiTimes size={40} color="#E71D36" />}
       </Column>
       <Column className="actions">
         <Button className="edit" type="button">
