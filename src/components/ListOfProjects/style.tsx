@@ -30,4 +30,14 @@ const ProjectsTitle = styled.h3`
   text-transform:capitalize;
 `;
 
-export { ListContainer, Label, ProjectsTitle };
+const AddProject = styled.button`
+  font-size: 16px;
+  background-color: var(--yellow);
+  margin: 15px 0 0;
+  border: 1px solid #ff9f1c;
+  padding: 6px 12px;
+  color: var(--white);
+  border-radius: 5px;
+`;
+
+export { ListContainer, Label, ProjectsTitle, AddProject };

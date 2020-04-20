@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import { ListItemComponent } from '../ListOfProjectsItems/index';
-import { ListContainer, Label, ProjectsTitle } from './style';
+import { ListContainer, Label, ProjectsTitle, AddProject } from './style';
 import { Project, propsGeneral } from '../../interfaces/interfaces';
 import { GETPROJECTS } from '../../hoc/getProjects';
 
@@ -39,6 +39,9 @@ const ListComponent = ({
       <nav>
         <ul>{render}</ul>
       </nav>
+      <AddProject>
+        + Proyecto
+      </AddProject>
     </ListContainer>
   );
 };
