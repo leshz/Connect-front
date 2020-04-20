@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ContainerWrap } from './style';
 import { List } from '../components/ListOfProjects';
 import { HeaderNav } from '../components/Header';
-import { ListEmployees } from '../components/ListOfEmployees';
+import { ListEmployessWithData } from './EmployeesWithData';
 
 
 export const Container = () => (
@@ -11,7 +11,7 @@ export const Container = () => (
     <HeaderNav />
     <ContainerWrap>
       <List />
-      <ListEmployees />
+      <ListEmployessWithData />
     </ContainerWrap>
   </>
 

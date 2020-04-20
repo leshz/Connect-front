@@ -1,46 +1,16 @@
+/* eslint-disable no-underscore-dangle */
 import * as React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import { ListContainer, TopList } from './style';
 import { ItemEmployee } from '../ListOfEmployessItem';
-import { employee } from '../../interfaces/interfaces';
-
-const GETEMPLOYEES = gql`
-{
-  getAllEmployees{
-    _id
-    firstName
-    lastName
-    position
-    state
-    salary
-    project{
-      name
-      department
-    }
-  }
-}
-`;
+import { propsOfListEmployees, employee } from '../../interfaces/interfaces';
 
 
 
+export const ListEmployees = ({ information }:propsOfListEmployees) => {
+  const render = information.map((item: employee, index: number) => (
+    <ItemEmployee {...item} key={item._id} />
+  ));
 
-export const ListEmployees = () => {
-
-  let employees;
-
-  const { loading, error, data } = useQuery(GETEMPLOYEES);
-
-  if (loading || error) {
-    employees = <p>Cargando</p>;
-  } else {
-    employees = data.getAllEmployees.map((item: employee, index: number) => (
-      <ItemEmployee {...item} key={index} />
-    ));
-  }
-
-
-  
   return (
     <ListContainer>
       <TopList>
@@ -51,8 +21,7 @@ export const ListEmployees = () => {
         <p>Estado</p>
         <p>Acciones</p>
       </TopList>
-      {employees}
+      {render}
     </ListContainer>
   );
 };
-
