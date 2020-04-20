@@ -19,6 +19,7 @@ export interface Project {
   _id?: string;
   name?: string;
   department?: string;
+  onClick: () => void;
 }
 
 export interface propsOfListEmployees { 

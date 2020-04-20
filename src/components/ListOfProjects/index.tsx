@@ -5,22 +5,35 @@ import { ListContainer, Label, ProjectsTitle } from './style';
 import { Project, propsGeneral } from '../../interfaces/interfaces';
 import { GETPROJECTS } from '../../hoc/getProjects';
 
+const { useState } = React;
+
 const ListComponent = ({
   data: { loading = true, getAllProjects = [] },
 }: propsGeneral) => {
+
+  const [isSelectedAll, setSelectedAll] = useState(true);
+  
   let render;
+  
+  const onClickChange = (event: React.FormEvent<HTMLInputElement>) => { 
+    setSelectedAll(!isSelectedAll);
+  };
+  const onClickHandler = () => { 
+    setSelectedAll(false);
+  };
 
   if (loading) {
     render = <h1>...</h1>;
   } else {
     render = getAllProjects.map((item: Project) => (
-      <ListItemComponent {...item} key={item._id} />
+      <ListItemComponent {...item} onClick={onClickHandler} key={item._id} />
     ));
   }
+
   return (
-    <ListContainer>
+    <ListContainer> 
       <Label htmlFor="all">
-        <input type="checkbox" name="" id="all" /> Todos los empleados
+        <input type="checkbox" name="" id="all" checked={isSelectedAll} onChange={onClickChange} /> Todos los empleados
       </Label>
       <ProjectsTitle>Proyectos</ProjectsTitle>
       <nav>

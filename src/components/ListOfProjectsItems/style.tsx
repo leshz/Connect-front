@@ -15,7 +15,8 @@ export const ListItem = styled.li`
     color:#FFF;
   }
   &.active{
-    background-color:var(--green)
+    background-color:var(--black);
+    color:var(--white);
   }
 `;
 
