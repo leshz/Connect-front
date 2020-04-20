@@ -1,12 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import * as React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { graphql } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { ListItemComponent } from '../ListOfProjectsItems/index';
 import { ListContainer, Label, ProjectsTitle } from './style';
-import { Project } from '../../interfaces/projects';
-
-const GETPROJECTS = gql`
+import { Project, propsGeneral } from '../../interfaces/interfaces';
+const GETPROJECTS = graphql(gql`
   {
     getAllProjects {
       _id
@@ -14,21 +13,20 @@ const GETPROJECTS = gql`
       department
     }
   }
-`;
+`);
 
-export const List = () => {
+const ListComponent = (props: propsGeneral) => {
+  const {
+    data: { loading, getAllProjects },
+  } = props;
   let projects;
-
-  const { loading, error, data } = useQuery(GETPROJECTS);
-
-  if (loading || error) {
-    projects = <p>Cargando</p>;
+  if (loading) {
+    projects = <h1>Cargando..</h1>;
   } else {
-    projects = data.getAllProjects.map((item: Project, index: number) => (
+    projects = getAllProjects.map((item: Project, index: number) => (
       <ListItemComponent {...item} key={index} />
     ));
   }
-
   return (
     <ListContainer>
       <Label htmlFor="all">
@@ -41,3 +39,5 @@ export const List = () => {
     </ListContainer>
   );
 };
+
+export const List = GETPROJECTS(ListComponent);

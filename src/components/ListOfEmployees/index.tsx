@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { ListContainer, TopList } from './style';
 import { ItemEmployee } from '../ListOfEmployessItem';
-import { employee } from '../../interfaces/employess';
+import { employee } from '../../interfaces/interfaces';
 
 const GETEMPLOYEES = gql`
 {

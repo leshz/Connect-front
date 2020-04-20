@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TiEdit, TiUserDelete, TiTimes, TiTick } from 'react-icons/ti';
 import { ListItemEmployee, Column, Button } from './style';
-import { employee } from '../../interfaces/employess';
+import { employee } from '../../interfaces/interfaces';
 
 const imagen = Math.floor(Math.random() * (100 - 1) + 1);
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ListItem, Title } from './style';
-import { Project } from '../../interfaces/projects';
+import { Project } from '../../interfaces/interfaces';
 
 const OnClickHandler = (event:React.MouseEvent<HTMLElement>) => {
   console.log(event);
