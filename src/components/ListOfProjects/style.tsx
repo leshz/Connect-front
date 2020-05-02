@@ -38,6 +38,14 @@ const AddProject = styled.button`
   padding: 6px 12px;
   color: var(--white);
   border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0);
+  outline:none;
+  transition: border-color .2s ease-in-out ,box-shadow .2s ease-in-out ;
+  &:hover{
+    border:1px solid rgba(0, 0, 0, 0.28);
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.3)
+  }
 `;
 
 export { ListContainer, Label, ProjectsTitle, AddProject };
