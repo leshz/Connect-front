@@ -28,6 +28,10 @@ const ListComponent = ({
   const onCloseModal = () => {
     setOpenModal(false);
   };
+  const addProject = (name?: string, department?: string) => { 
+    
+
+  };
 
   if (loading) {
     render = <span>...</span>;
@@ -39,7 +43,7 @@ const ListComponent = ({
 
   return (
     <ListContainer>
-      <ModalNewProject isOpen={isOpenModal} onClose={onCloseModal} />
+      <ModalNewProject isOpen={isOpenModal} addProject={addProject} onClose={onCloseModal} />
       <Label htmlFor="all">
         <input
           type="checkbox"
@@ -47,7 +51,7 @@ const ListComponent = ({
           id="all"
           checked={isSelectedAll}
           onChange={onClickChange}
-        />{' '}
+        />
         Todos los empleados
       </Label>
       <ProjectsTitle>Proyectos</ProjectsTitle>

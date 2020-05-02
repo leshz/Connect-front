@@ -10,3 +10,13 @@ export const GETPROJECTS = graphql(gql`
     }
   }
 `);
+
+export const CREATEPROJECT = gql`
+  mutation CreateProject($name: String!, $department: String!) {
+    crateProject(input: { name: $name, department: $department }) {
+      _id
+      name
+      department
+    }
+  }
+`;
