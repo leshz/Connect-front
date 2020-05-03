@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { ListEmployees } from '../components/ListOfEmployees';
-import { propsGeneral } from '../interfaces/interfaces';
 
 const query =  gql`
 {
@@ -14,6 +13,7 @@ const query =  gql`
     state
     salary
     project{
+      _id
       name
       department
     }

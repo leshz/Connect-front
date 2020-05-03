@@ -18,8 +18,9 @@ export const ItemEmployee = (props: employee) => {
     lastName,
     position,
     salary,
-    state, } = props;
-
+    state,
+  } = props;
+  
   const [IsOpenModalEdit, setModalOpenEdit] = useState(false);
   const [IsOpenModalDelete, setModalDelete] = useState(false);
 

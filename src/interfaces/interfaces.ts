@@ -12,7 +12,7 @@ export interface employee {
   position?: string;
   salary?: number;
   state?: boolean;
-  project?: Project;
+  project?: any;
 }
 
 export interface Project {
@@ -21,7 +21,23 @@ export interface Project {
   department?: string;
   onClick: () => void;
 }
+export interface projectItem { 
+  [id:number]:Project
+}
 
 export interface propsOfListEmployees { 
   information ?: employee[]
+}
+
+export interface propsEditEmployee {
+  children?: unknown;
+  isOpen?: boolean;
+  onClose: () => void;
+  firstName?: string;
+  lastName?: string;
+  state?: boolean;
+  salary?: number;
+  position?: string;
+  _id?: string;
+  project?: any[];
 }
