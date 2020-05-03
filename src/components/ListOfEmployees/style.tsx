@@ -13,7 +13,7 @@ export const ListContainer = styled.div`
   color:#2d2d2d;
   display : grid;
   grid-template-columns : repeat(6,1fr);
-  grid-template-rows:  40px  auto;
+  grid-template-rows:  min-content minmax(min-content, max-content) min-content;
   grid-row-gap: 15px;
 
 
