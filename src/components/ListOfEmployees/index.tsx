@@ -4,9 +4,8 @@ import { ListContainer, TopList } from './style';
 import { ItemEmployee } from '../ListOfEmployessItem';
 import { propsOfListEmployees, employee } from '../../interfaces/interfaces';
 
+export const ListEmployees = ({ information }: propsOfListEmployees) => {
 
-
-export const ListEmployees = ({ information }:propsOfListEmployees) => {
   const render = information.map((item: employee, index: number) => (
     <ItemEmployee {...item} key={item._id} />
   ));

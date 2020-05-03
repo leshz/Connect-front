@@ -11,9 +11,7 @@ interface props {
   onClose: () => void;
   addProject: (name?:string, department?:string) => void;
 }
-interface mutationProp { 
-  createProject?: () => void;
-}
+
 export const ModalNewProject = (props: props) => {
   return (
     <Mutation mutation={CREATEPROJECT}>
