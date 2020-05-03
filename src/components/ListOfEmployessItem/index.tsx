@@ -11,13 +11,14 @@ const imagen = Math.floor(Math.random() * (100 - 1) + 1);
 
 
 
-export const ItemEmployee = ({
-  firstName,
-  lastName,
-  position,
-  salary,
-  state,
-}: employee) => {
+
+export const ItemEmployee = (props: employee) => {
+
+  const { firstName,
+    lastName,
+    position,
+    salary,
+    state, } = props;
 
   const [IsOpenModalEdit, setModalOpenEdit] = useState(false);
   const [IsOpenModalDelete, setModalDelete] = useState(false);
@@ -35,9 +36,10 @@ export const ItemEmployee = ({
     setModalDelete(false);
   };
 
+
   return (
     <>
-      <ModalEdit isOpen={IsOpenModalEdit} onClose={onCloseEdit} />
+      <ModalEdit isOpen={IsOpenModalEdit} {...props} onClose={onCloseEdit} />
       <ModalDelete isOpen={IsOpenModalDelete} onClose={onCloseDelete} />
       <ListItemEmployee>
         <Column className="checkbox">

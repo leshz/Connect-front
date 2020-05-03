@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Mutation } from 'react-apollo';
 import { MdSave } from 'react-icons/md';
 import { ModalPortal } from '../Modal/index';
-import { CREATEPROJECT } from '../../hoc/getProjects';
+import { CREATEPROJECT } from '../../graphql/getProjects';
 import { Input, Title, ButtonE, ButtonS } from './style';
 
 interface props {

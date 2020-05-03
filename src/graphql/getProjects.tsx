@@ -20,3 +20,27 @@ export const CREATEPROJECT = gql`
     }
   }
 `;
+
+export const EDITEMPLOYEE = gql`
+  mutation EditEmployee(
+    $id: ID!
+    $firstName: String!
+    $lastName: String!
+    $salary: Number!
+    $state: Boolean!
+    $project: String
+  ) {
+    editEmployee(
+      id: $id
+      input: {
+        firstName: $firstName
+        lastName: $lastName
+        salary: $salary
+        state: $state
+        project: $project
+      }
+    ) {
+      _id
+    }
+  }
+`;

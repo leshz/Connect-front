@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ListItemComponent } from '../ListOfProjectsItems/index';
 import { ListContainer, Label, ProjectsTitle, AddProject } from './style';
 import { Project, propsGeneral } from '../../interfaces/interfaces';
-import { GETPROJECTS } from '../../hoc/getProjects';
+import { GETPROJECTS } from '../../graphql/getProjects';
 import { ModalNewProject } from '../ModalNewProject/index';
 
 const { useState } = React;

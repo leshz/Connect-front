@@ -8,9 +8,7 @@ interface props {
   onClose: () => void;
 }
 
-export const ModalDelete = (props:props) => { 
-  console.log(props);
-  
+export const ModalDelete = (props:props) => {   
   return (
     <ModalPortal {...props}>
       Borremos esta chimbada 
