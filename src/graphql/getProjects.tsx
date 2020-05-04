@@ -26,9 +26,10 @@ export const EDITEMPLOYEE = gql`
     $id: ID!
     $firstName: String!
     $lastName: String!
-    $salary: Number!
+    $salary: Int!
     $state: Boolean!
-    $project: String
+    $position:String!
+    $project: ID
   ) {
     editEmployee(
       id: $id
@@ -37,6 +38,7 @@ export const EDITEMPLOYEE = gql`
         lastName: $lastName
         salary: $salary
         state: $state
+        position:$position
         project: $project
       }
     ) {
