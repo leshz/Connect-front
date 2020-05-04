@@ -8,9 +8,10 @@ import { ModalNewProject } from '../ModalNewProject/index';
 
 const { useState } = React;
 
-const ListComponent = ({
-  data: { loading = true, getAllProjects = [] },
-}: propsGeneral) => {
+const ListComponent = (props:propsGeneral) => {
+  const {
+    data: { loading = true, getAllProjects = [], refetch },
+  } = props;  
   const [isSelectedAll, setSelectedAll] = useState(true);
   const [isOpenModal, setOpenModal] = useState(false);
 
@@ -28,10 +29,6 @@ const ListComponent = ({
   const onCloseModal = () => {
     setOpenModal(false);
   };
-  const addProject = (name?: string, department?: string) => { 
-    
-
-  };
 
   if (loading) {
     render = <span>...</span>;
@@ -40,10 +37,9 @@ const ListComponent = ({
       <ListItemComponent {...item} onClick={onClickHandler} key={item._id} />
     ));
   }
-
   return (
     <ListContainer>
-      <ModalNewProject isOpen={isOpenModal} addProject={addProject} onClose={onCloseModal} />
+      <ModalNewProject isOpen={isOpenModal} onClose={onCloseModal} />
       <Label htmlFor="all">
         <input
           type="checkbox"

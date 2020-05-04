@@ -3,6 +3,7 @@ export interface propsGeneral {
     loading?: boolean;
     getAllProjects?: object[];
     getAllEmployees?: object[];
+    refetch: () => {}
   };
 }
 export interface employee {

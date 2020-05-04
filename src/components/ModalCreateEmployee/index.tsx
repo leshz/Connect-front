@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Mutation } from 'react-apollo';
 import { ModalPortal } from '../Modal/index';
-import { CREATEEMPLOYEE } from '../../graphql/getProjects';
+import { CREATEEMPLOYEE, GETALLEMPLOYEES } from '../../graphql/getProjects';
 import { Input, Title, ButtonE, ButtonS } from './style';
 import { propsEditEmployee } from '../../interfaces/interfaces';
 
@@ -27,7 +27,18 @@ export const ModalCreate = (props: propsEditEmployee) => {
   };
 
   return (
-    <Mutation mutation={CREATEEMPLOYEE}>
+    <Mutation
+      mutation={CREATEEMPLOYEE}
+      update={(cache, { data: { createEmployee } }) => {
+        const { getAllEmployees } = cache.readQuery({ query: GETALLEMPLOYEES });
+        cache.writeQuery({
+          query: GETALLEMPLOYEES,
+          data: {
+            getAllEmployees: getAllEmployees.concat([createEmployee])
+          }
+        });
+      }}
+    >
       {(createEmployee: (input: unknown) => void, { data }: never) => (
         <ModalPortal {...props}>
           <Title>Crear Empleado</Title>

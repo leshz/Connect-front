@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Mutation } from 'react-apollo';
 import { MdSave } from 'react-icons/md';
 import { ModalPortal } from '../Modal/index';
-import { CREATEPROJECT } from '../../graphql/getProjects';
+import { CREATEPROJECT, getProjectsQuery } from '../../graphql/getProjects';
 import { Input, Title, ButtonE, ButtonS } from './style';
 
 const { useState } = React;
@@ -10,7 +10,7 @@ interface props {
   children?: unknown;
   isOpen?: boolean;
   onClose: () => void;
-  addProject: (name?:string, department?:string) => void;
+  update?: () => {};
 }
 
 interface state { 
@@ -34,7 +34,18 @@ export const ModalNewProject = (props: props) => {
 
 
   return (
-    <Mutation mutation={CREATEPROJECT}>
+    <Mutation
+      mutation={CREATEPROJECT}
+      update={(cache, { data:{ crateProject } }) => { 
+        const { getAllProjects } = cache.readQuery({ query: getProjectsQuery });
+        cache.writeQuery({
+          query: getProjectsQuery, 
+          data: {
+            getAllProjects: getAllProjects.concat([crateProject])
+          }
+        });
+      }}
+    >
       {(createProject:(coco:unknown)=>void, { data }:never) => (
         <ModalPortal {...props}>
           <Title>Nuevo proyecto</Title>

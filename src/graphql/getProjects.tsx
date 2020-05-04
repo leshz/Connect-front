@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo';
 import { gql } from 'apollo-boost';
 
-export const GETPROJECTS = graphql(gql`
+export const getProjectsQuery = gql`
   {
     getAllProjects {
       _id
@@ -9,14 +9,33 @@ export const GETPROJECTS = graphql(gql`
       department
     }
   }
-`);
+`;
 
+export const GETPROJECTS = graphql(getProjectsQuery);
 export const CREATEPROJECT = gql`
   mutation CreateProject($name: String!, $department: String!) {
     crateProject(input: { name: $name, department: $department }) {
       _id
       name
       department
+    }
+  }
+`;
+
+export const GETALLEMPLOYEES = gql`
+  {
+    getAllEmployees {
+      _id
+      firstName
+      lastName
+      position
+      state
+      salary
+      project {
+        _id
+        name
+        department
+      }
     }
   }
 `;
@@ -28,7 +47,7 @@ export const EDITEMPLOYEE = gql`
     $lastName: String!
     $salary: Int!
     $state: Boolean!
-    $position:String!
+    $position: String!
     $project: ID
   ) {
     editEmployee(
@@ -38,11 +57,21 @@ export const EDITEMPLOYEE = gql`
         lastName: $lastName
         salary: $salary
         state: $state
-        position:$position
+        position: $position
         project: $project
       }
     ) {
       _id
+      firstName
+      lastName
+      salary
+      state
+      position
+      project {
+        _id
+        name
+        department
+      }
     }
   }
 `;
@@ -53,7 +82,7 @@ export const CREATEEMPLOYEE = gql`
     $lastName: String!
     $salary: Int!
     $state: Boolean!
-    $position:String!
+    $position: String!
     $project: ID
   ) {
     createEmployee(
@@ -62,19 +91,27 @@ export const CREATEEMPLOYEE = gql`
         lastName: $lastName
         salary: $salary
         state: $state
-        position:$position
+        position: $position
         project: $project
       }
     ) {
       _id
+      firstName
+      lastName
+      salary
+      state
+      position
+      project {
+        _id
+        name
+        department
+      }
     }
   }
 `;
 
 export const DELETEEMPLOYEE = gql`
-  mutation deleteEmployee(
-    $id: ID!
-  ) {
-    deleteEmployee(id: $id) 
+  mutation deleteEmployee($id: ID!) {
+    deleteEmployee(id: $id)
   }
 `;

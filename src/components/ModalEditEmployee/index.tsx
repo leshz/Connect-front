@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Mutation } from 'react-apollo';
 import { ModalPortal } from '../Modal/index';
-import { EDITEMPLOYEE } from '../../graphql/getProjects';
+import { EDITEMPLOYEE, GETALLEMPLOYEES } from '../../graphql/getProjects';
 import { Input, Title, ButtonE, ButtonS } from './style';
 import { propsEditEmployee } from '../../interfaces/interfaces';
 
@@ -18,7 +18,7 @@ export const ModalEdit = (props: propsEditEmployee) => {
     salary,
     position,
     _id,
-    project:'',
+    project,
   });
 
   const handlerChangeForm = (e) => {
@@ -31,8 +31,23 @@ export const ModalEdit = (props: propsEditEmployee) => {
   const projectName = project.length > 0 ? project[0].name : '';
 
   return (
-    <Mutation mutation={EDITEMPLOYEE}>
-      {(editEmployee: (input:unknown) => void, { data }: never) => (
+    <Mutation
+      mutation={EDITEMPLOYEE}
+      update={(cache, { data: { editEmployee } }) => {
+      
+        const { getAllEmployees } = cache.readQuery({ query: GETALLEMPLOYEES });
+        cache.writeQuery({
+          query: GETALLEMPLOYEES,
+          data: {
+            getAllEmployees: getAllEmployees.concat([editEmployee])
+          }
+        });
+        
+
+
+      }}
+    >
+      {(editEmployee: (input: unknown) => void, { data }: never) => (
         <ModalPortal {...props}>
           <Title>Editar Empleado</Title>
           <Input>
@@ -74,13 +89,14 @@ export const ModalEdit = (props: propsEditEmployee) => {
           <Input>
             <label htmlFor="state">
               Estado
-              <select id="state" name="state" defaultValue={Number(state)} onChange={handlerChangeForm}>
-                <option value="1">
-                  Activo
-                </option>
-                <option value="0">
-                  No Activo
-                </option>
+              <select
+                id="state"
+                name="state"
+                defaultValue={Number(state)}
+                onChange={handlerChangeForm}
+              >
+                <option value="1">Activo</option>
+                <option value="0">No Activo</option>
               </select>
             </label>
           </Input>
@@ -110,24 +126,25 @@ export const ModalEdit = (props: propsEditEmployee) => {
               </select>
             </label>
           </Input>
-          <ButtonS onClick={() => {
+          <ButtonS
+            onClick={() => {
+              const stateBoolean = Boolean(Number(modalForm.state));
 
-            const stateBoolean = Boolean(Number(modalForm.state));
-
-            editEmployee({
-              variables: {
-                id: modalForm._id,
-                firstName:modalForm.firstName,
-                lastName: modalForm.lastName,
-                salary: Number(modalForm.salary),
-                state: stateBoolean,
-                position: modalForm.position,
-                project: modalForm.project,
-              }
-            });
-            props.onClose();
-          }}
-          >Guardar
+              editEmployee({
+                variables: {
+                  id: props._id,
+                  firstName: modalForm.firstName,
+                  lastName: modalForm.lastName,
+                  salary: Number(modalForm.salary),
+                  state: stateBoolean,
+                  position: modalForm.position,
+                  project: '',
+                },
+              });
+              props.onClose();
+            }}
+          >
+            Guardar
           </ButtonS>
           <ButtonE onClick={props.onClose}>Cerrar</ButtonE>
         </ModalPortal>
