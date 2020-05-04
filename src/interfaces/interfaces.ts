@@ -12,6 +12,7 @@ export interface employee {
   position?: string;
   salary?: number;
   state?: boolean;
+  item?: number;
   project?: any;
 }
 

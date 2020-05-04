@@ -47,6 +47,30 @@ export const EDITEMPLOYEE = gql`
   }
 `;
 
+export const CREATEEMPLOYEE = gql`
+  mutation createEmployee(
+    $firstName: String!
+    $lastName: String!
+    $salary: Int!
+    $state: Boolean!
+    $position:String!
+    $project: ID
+  ) {
+    createEmployee(
+      input: {
+        firstName: $firstName
+        lastName: $lastName
+        salary: $salary
+        state: $state
+        position:$position
+        project: $project
+      }
+    ) {
+      _id
+    }
+  }
+`;
+
 export const DELETEEMPLOYEE = gql`
   mutation deleteEmployee(
     $id: ID!

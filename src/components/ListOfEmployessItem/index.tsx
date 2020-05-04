@@ -8,8 +8,6 @@ import { ModalDelete } from '../ModalDeleteEmployee';
 
 const { useState } = React;
 
-const imagen = Math.floor(Math.random() * (100 - 1) + 1);
-
 export const ItemEmployee = (props: employee) => {
   const { firstName, lastName, position, salary, state } = props;
 
@@ -43,7 +41,7 @@ export const ItemEmployee = (props: employee) => {
         </Column>
         <Column className="imagen">
           <img
-            src={`https://randomuser.me/api/portraits/women/${imagen}.jpg`}
+            src={`https://randomuser.me/api/portraits/women/${props.item}.jpg`}
             alt="imagen de perfil"
           />
         </Column>
