@@ -34,17 +34,14 @@ export const ModalEdit = (props: propsEditEmployee) => {
     <Mutation
       mutation={EDITEMPLOYEE}
       update={(cache, { data: { editEmployee } }) => {
-      
         const { getAllEmployees } = cache.readQuery({ query: GETALLEMPLOYEES });
+        const result = getAllEmployees.map(item => item._id === editEmployee._id ? editEmployee : item);
         cache.writeQuery({
           query: GETALLEMPLOYEES,
           data: {
-            getAllEmployees: getAllEmployees.concat([editEmployee])
+            getAllEmployees: result
           }
         });
-        
-
-
       }}
     >
       {(editEmployee: (input: unknown) => void, { data }: never) => (
