@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "connect-front-shz",
+  
   "builds": [{
     "use": "@now/static-build",
     "src": "package.json"
