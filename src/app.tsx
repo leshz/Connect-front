@@ -6,7 +6,7 @@ import { GlobalStyle } from './global-styles';
 
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/api',
+  uri: 'https://connect-back.leshz.now.sh/api',
 });
 
 export const App = () => (
