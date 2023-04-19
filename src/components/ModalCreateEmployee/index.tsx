@@ -1,5 +1,5 @@
-/* eslint-disable no-underscore-dangle */
-import * as React from 'react';
+//@ts-nocheck
+import React from 'react';
 import { Mutation, Query } from 'react-apollo';
 import { ModalPortal } from '../Modal/index';
 import {
@@ -36,9 +36,13 @@ export const ModalCreate = (props: propsEditEmployee) => {
         let renderOptionsProject = [];
         if (!loading) {
           const { getAllProjects } = data;
-          renderOptionsProject = getAllProjects.map(item => (<option key={item._id} value={item._id}>{item.name}</option>));
+          renderOptionsProject = getAllProjects.map((item) => (
+            <option key={item._id} value={item._id}>
+              {item.name}
+            </option>
+          ));
         }
-          
+
         return (
           <Mutation
             mutation={CREATEEMPLOYEE}
@@ -130,7 +134,7 @@ export const ModalCreate = (props: propsEditEmployee) => {
                 <ButtonS
                   onClick={() => {
                     const stateBoolean = Boolean(Number(modalForm.state));
-                    const information:dataToGQ = {
+                    const information: dataToGQ = {
                       firstName: modalForm.firstName,
                       lastName: modalForm.lastName,
                       salary: Number(modalForm.salary),
@@ -144,7 +148,7 @@ export const ModalCreate = (props: propsEditEmployee) => {
                       information.project = modalForm.project;
                     }
                     createEmployee({
-                      variables:information,
+                      variables: information,
                     });
                     props.onClose();
                   }}

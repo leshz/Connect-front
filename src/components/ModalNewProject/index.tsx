@@ -1,9 +1,11 @@
-import * as React from 'react';
+//@ts-nocheck
+import React from 'react';
 import { Mutation } from 'react-apollo';
 import { MdSave } from 'react-icons/md';
 import { ModalPortal } from '../Modal/index';
 import { CREATEPROJECT, getProjectsQuery } from '../../graphql/getProjects';
 import { Input, Title, ButtonE, ButtonS } from './style';
+import { Project } from '../../interfaces/interfaces';
 
 const { useState } = React;
 interface props {
@@ -13,50 +15,57 @@ interface props {
   update?: () => {};
 }
 
-interface state { 
-  name?: string
-  department?:string
+interface state {
+  name?: string;
+  department?: string;
 }
 
 export const ModalNewProject = (props: props) => {
   const [stateFrom, setFromState] = useState({
     name: '',
-    department:''
+    department: '',
   });
 
-
-
-  const handleChangeForm = (e) => { 
-    setFromState({ ...stateFrom,
-      [e.target.name] : e.target.value
-    });
+  const handleChangeForm = (e) => {
+    setFromState({ ...stateFrom, [e.target.name]: e.target.value });
   };
-
 
   return (
     <Mutation
       mutation={CREATEPROJECT}
-      update={(cache, { data:{ crateProject } }) => { 
+      update={(cache, { data: { crateProject } }) => {
         const { getAllProjects } = cache.readQuery({ query: getProjectsQuery });
         cache.writeQuery({
-          query: getProjectsQuery, 
+          query: getProjectsQuery,
           data: {
-            getAllProjects: getAllProjects.concat([crateProject])
-          }
+            getAllProjects: getAllProjects.concat([crateProject]),
+          },
         });
       }}
     >
-      {(createProject:(coco:unknown)=>void, { data }:never) => (
+      {(createProject: (coco: unknown) => void, { data }: never) => (
         <ModalPortal {...props}>
           <Title>Nuevo proyecto</Title>
           <Input>
-            <label htmlFor="name">Nombre del proyecto
-              <input type="text" name="name" onChange={handleChangeForm} id="name" />
+            <label htmlFor="name">
+              Nombre del proyecto
+              <input
+                type="text"
+                name="name"
+                onChange={handleChangeForm}
+                id="name"
+              />
             </label>
           </Input>
           <Input>
-            <label htmlFor="dpt">Departamento
-              <input type="text" name="department" onChange={handleChangeForm} id="dpt" />
+            <label htmlFor="dpt">
+              Departamento
+              <input
+                type="text"
+                name="department"
+                onChange={handleChangeForm}
+                id="dpt"
+              />
             </label>
           </Input>
           <ButtonS
@@ -74,6 +83,6 @@ export const ModalNewProject = (props: props) => {
           </ButtonE>
         </ModalPortal>
       )}
-    </Mutation>  
+    </Mutation>
   );
 };

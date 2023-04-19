@@ -12,6 +12,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    mainFields: ['browser', 'main', 'module'],
+  },
+  devServer: {
   },
   module: {
     rules: [

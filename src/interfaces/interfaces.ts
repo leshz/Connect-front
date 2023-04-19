@@ -1,7 +1,7 @@
 export interface propsGeneral {
-  data?: {
+  data: {
     loading?: boolean;
-    getAllProjects?: object[];
+    getAllProjects?: Project[];
     getAllEmployees?: object[];
     refetch: () => {};
   };
@@ -30,12 +30,12 @@ export interface projectItem {
 export interface propsOfListEmployees {
   information?: employee[];
 }
-interface project  extends ArrayLike<project>{
+interface project extends ArrayLike<project> {
   _id: string;
   name: string;
   department: string;
 }
-export interface dataToGQ { 
+export interface dataToGQ {
   id?: string;
   firstName: string;
   lastName: string;
