@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { useState, type FormEvent } from 'react';
+import { useState, type FormEvent, ReactComponentElement } from 'react';
 import { ListItemComponent } from '../ListOfProjectsItems/index';
 import { ListContainer, Label, ProjectsTitle, AddProject } from './style';
 import { propsGeneral } from '../../interfaces/interfaces';
@@ -59,4 +59,4 @@ const ListComponent = ({
   );
 };
 
-export const List = GETPROJECTS(ListComponent);
+export default List = GETPROJECTS(ListComponent) as ReactComponentElement;
