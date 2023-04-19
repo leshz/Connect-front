@@ -1,23 +1,18 @@
-/* eslint-disable no-underscore-dangle */
-import * as React from 'react';
+//@ts-nocheck
+import { useState, type FormEvent } from 'react';
 import { ListItemComponent } from '../ListOfProjectsItems/index';
 import { ListContainer, Label, ProjectsTitle, AddProject } from './style';
-import { Project, propsGeneral } from '../../interfaces/interfaces';
+import { propsGeneral } from '../../interfaces/interfaces';
 import { GETPROJECTS } from '../../graphql/getProjects';
 import { ModalNewProject } from '../ModalNewProject/index';
 
-const { useState } = React;
-
-const ListComponent = (props:propsGeneral) => {
-  const {
-    data: { loading = true, getAllProjects = [], refetch },
-  } = props;  
+const ListComponent = ({
+  data: { loading = true, getAllProjects = [] },
+}: propsGeneral): JSX.Element => {
   const [isSelectedAll, setSelectedAll] = useState(true);
   const [isOpenModal, setOpenModal] = useState(false);
 
-  let render;
-
-  const onClickChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const onClickChange = (event: FormEvent<HTMLInputElement>) => {
     setSelectedAll(!isSelectedAll);
   };
   const onClickHandler = () => {
@@ -30,13 +25,6 @@ const ListComponent = (props:propsGeneral) => {
     setOpenModal(false);
   };
 
-  if (loading) {
-    render = <span>...</span>;
-  } else {
-    render = getAllProjects.map((item: Project) => (
-      <ListItemComponent {...item} onClick={onClickHandler} key={item._id} />
-    ));
-  }
   return (
     <ListContainer>
       <ModalNewProject isOpen={isOpenModal} onClose={onCloseModal} />
@@ -52,7 +40,19 @@ const ListComponent = (props:propsGeneral) => {
       </Label>
       <ProjectsTitle>Proyectos</ProjectsTitle>
       <nav>
-        <ul>{render}</ul>
+        <ul>
+          {loading ? (
+            <span>...</span>
+          ) : (
+            getAllProjects.map((item) => (
+              <ListItemComponent
+                {...item}
+                onClick={onClickHandler}
+                key={item._id}
+              />
+            ))
+          )}
+        </ul>
       </nav>
       <AddProject onClick={openModal}>+ Proyecto</AddProject>
     </ListContainer>

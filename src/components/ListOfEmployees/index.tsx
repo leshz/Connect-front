@@ -1,25 +1,22 @@
-/* eslint-disable no-underscore-dangle */
-import * as React from 'react';
+import React from 'react';
 import { ListContainer, TopList, AddEmployee } from './style';
 import { ItemEmployee } from '../ListOfEmployessItem';
 import { propsOfListEmployees, employee } from '../../interfaces/interfaces';
 import { ModalCreate } from '../ModalCreateEmployee';
 
-
 const { useState } = React;
 
-export const ListEmployees = ({ information }: propsOfListEmployees) => {
-
+export const ListEmployees = ({ information = [] }: propsOfListEmployees) => {
   const [isOpen, setModalState] = useState(false);
 
   const render = information.map((item: employee, index: number) => (
     <ItemEmployee {...item} item={index} key={item._id} />
   ));
 
-  const onClose = () => { 
+  const onClose = () => {
     setModalState(false);
   };
-  const OpenModal = () => { 
+  const OpenModal = () => {
     setModalState(true);
   };
 

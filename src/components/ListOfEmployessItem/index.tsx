@@ -9,7 +9,7 @@ import { ModalDelete } from '../ModalDeleteEmployee';
 const { useState } = React;
 
 export const ItemEmployee = (props: employee) => {
-  const { firstName, lastName, position, salary, state } = props;
+  const { firstName = '', lastName = '', position = '', salary, state } = props;
 
   const [IsOpenModalEdit, setModalOpenEdit] = useState(false);
   const [IsOpenModalDelete, setModalDelete] = useState(false);

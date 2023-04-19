@@ -1,5 +1,5 @@
-/* eslint-disable no-underscore-dangle */
-import * as React from 'react';
+//@ts-nocheck
+import React from 'react';
 import { Mutation } from 'react-apollo';
 import { ModalPortal } from '../Modal/index';
 import { DELETEEMPLOYEE, GETALLEMPLOYEES } from '../../graphql/getProjects';
@@ -31,7 +31,7 @@ export const ModalDelete = (props: propsEditEmployee) => {
           <ModalPortal {...props}>
             <Title>¿Estas seguro?</Title>
             <Message>
-              Borrar el registro de{' '}
+              Borrar el registro de
               <b>
                 {props.firstName} {props.lastName}
               </b>

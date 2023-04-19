@@ -1,5 +1,5 @@
-/* eslint-disable no-underscore-dangle */
-import * as React from 'react';
+//@ts-nocheck
+import React from 'react';
 import { Mutation, Query } from 'react-apollo';
 import { ModalPortal } from '../Modal/index';
 import {
