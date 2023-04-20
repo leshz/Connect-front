@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const dotenv = require('dotenv');
+// const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -9,12 +11,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
     }),
+    // new webpack.DefinePlugin(envKeys),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     mainFields: ['browser', 'main', 'module'],
   },
   devServer: {
+    port: 3000,
   },
   module: {
     rules: [

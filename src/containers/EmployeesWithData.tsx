@@ -1,8 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { gql } from 'apollo-boost';
 import { ListEmployees } from '../components/ListOfEmployees';
-
 import { GETALLEMPLOYEES } from '../graphql/getProjects';
 
 export const ListEmployessWithData = () => (

@@ -1,14 +1,14 @@
 import React from 'react';
 import { ContainerWrap } from './style';
-import List from '../components/ListOfProjects';
 import { HeaderNav } from '../components/Header';
 import { ListEmployessWithData } from './EmployeesWithData';
+import { ListWithData } from './ListWithData';
 
 export const Container = () => (
   <>
     <HeaderNav />
     <ContainerWrap>
-      <List />
+      <ListWithData />
       <ListEmployessWithData />
     </ContainerWrap>
   </>
