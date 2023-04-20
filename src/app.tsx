@@ -6,7 +6,7 @@ import { Container } from './containers/content';
 import { GlobalStyle } from './global-styles';
 
 const client = new ApolloClient({
-  uri: process.env.ENDPOINT,
+  uri: 'https://connect-back-leshz.vercel.app/api',
 });
 
 export const App = () => (
