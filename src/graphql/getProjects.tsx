@@ -1,8 +1,6 @@
-import { graphql } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import { Project } from '../interfaces/interfaces';
 
-export const getProjectsQuery = gql`
+export const GETPROJECTSQUERY = gql`
   {
     getAllProjects {
       _id
@@ -12,7 +10,6 @@ export const getProjectsQuery = gql`
   }
 `;
 
-export const GETPROJECTS = graphql<{}, Project[]>(getProjectsQuery);
 export const CREATEPROJECT = gql`
   mutation CreateProject($name: String!, $department: String!) {
     crateProject(input: { name: $name, department: $department }) {

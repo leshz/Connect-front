@@ -1,13 +1,11 @@
 //@ts-nocheck
-import { useState, type FormEvent, ReactComponentElement } from 'react';
+import { useState, type FormEvent } from 'react';
 import { ListItemComponent } from '../ListOfProjectsItems/index';
 import { ListContainer, Label, ProjectsTitle, AddProject } from './style';
-import { propsGeneral } from '../../interfaces/interfaces';
-import { GETPROJECTS } from '../../graphql/getProjects';
 import { ModalNewProject } from '../ModalNewProject/index';
 
 const ListComponent = ({
-  data: { loading = true, getAllProjects = [] },
+  data: { loading = false, getAllProjects = [] } = {},
 }: propsGeneral): JSX.Element => {
   const [isSelectedAll, setSelectedAll] = useState(true);
   const [isOpenModal, setOpenModal] = useState(false);
@@ -59,4 +57,4 @@ const ListComponent = ({
   );
 };
 
-export default List = GETPROJECTS(ListComponent) as ReactComponentElement;
+export default ListComponent;

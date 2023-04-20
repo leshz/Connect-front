@@ -5,7 +5,7 @@ import { ModalPortal } from '../Modal/index';
 import {
   CREATEEMPLOYEE,
   GETALLEMPLOYEES,
-  getProjectsQuery,
+  GETPROJECTSQUERY,
 } from '../../graphql/getProjects';
 import { Input, Title, ButtonE, ButtonS } from './style';
 import { propsEditEmployee, dataToGQ } from '../../interfaces/interfaces';
@@ -31,7 +31,7 @@ export const ModalCreate = (props: propsEditEmployee) => {
   };
 
   return (
-    <Query query={getProjectsQuery}>
+    <Query query={GETPROJECTSQUERY}>
       {({ data, loading }) => {
         let renderOptionsProject = [];
         if (!loading) {

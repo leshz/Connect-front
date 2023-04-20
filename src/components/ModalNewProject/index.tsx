@@ -3,7 +3,7 @@ import React from 'react';
 import { Mutation } from 'react-apollo';
 import { MdSave } from 'react-icons/md';
 import { ModalPortal } from '../Modal/index';
-import { CREATEPROJECT, getProjectsQuery } from '../../graphql/getProjects';
+import { CREATEPROJECT, GETPROJECTSQUERY } from '../../graphql/getProjects';
 import { Input, Title, ButtonE, ButtonS } from './style';
 import { Project } from '../../interfaces/interfaces';
 
@@ -34,9 +34,9 @@ export const ModalNewProject = (props: props) => {
     <Mutation
       mutation={CREATEPROJECT}
       update={(cache, { data: { crateProject } }) => {
-        const { getAllProjects } = cache.readQuery({ query: getProjectsQuery });
+        const { getAllProjects } = cache.readQuery({ query: GETPROJECTSQUERY });
         cache.writeQuery({
-          query: getProjectsQuery,
+          query: GETPROJECTSQUERY,
           data: {
             getAllProjects: getAllProjects.concat([crateProject]),
           },
